@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import healthcheckRouter from "./routes/healthcheck.routes.js";
 
 const app = express();
 
@@ -18,5 +19,8 @@ app.use(
 );
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static("public"));
+
+//routes
+app.use("/api/v1/healthcheck", healthcheckRouter);
 
 export { app };
